@@ -1,0 +1,45 @@
+<main>
+  <header class="searchForm-container">
+    <!-- Logo -->
+    <img src="https://image.ibb.co/e6vOFQ/wikipedia.png">
+    <!-- Form -->
+    <form class="searchForm" (submit)="search()">
+      <input  type="search"
+              name="ricerca"
+              class="searchForm-input"
+              [(ngModel)]="stringaDiRicerca"
+              placeholder="Scrivi un termine di ricerca">
+      <!-- Tasto cerca -->
+      <button type="submit"
+              class="icon searchIcon">
+        <img src="https://image.ibb.co/cpG8zk/search.png">
+      </button>
+    </form>
+  </header>
+
+  <!-- Risultati di ricerca -->
+  <section class="searchResults">
+    <div class="resultItem" *ngFor="let result of resultsList">
+
+      <div class="resultItem-title">
+        <a routerLink="/article/{{result.title}}">Anteprima</a>  <!--routerLink a differenza di href non aggiorna la pagina-->
+      </div>
+      <!--{{result.title}}-->
+      <h3 class="resultItem-title">
+        <a [href]="getLink(result.title)"
+          target="_blank">
+          {{result.title}}
+        </a>
+      </h3>
+      <span class="resultItem-snippet"
+        [innerHTML]="result.snippet"></span>
+        <!--[innerHTML] consente di interpretare il contenuto html del risultato--> 
+        <a  [href]="getLink(result.title)"
+            target="_blank"
+            class="resultItem-link">
+            {{getLink(result.title)}}
+        </a>
+    </div>
+  </section>
+
+</main>
