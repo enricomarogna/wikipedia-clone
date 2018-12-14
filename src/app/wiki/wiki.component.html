@@ -1,22 +1,5 @@
 <main>
-  <header class="searchForm-container">
-    <!-- Logo -->
-    <img src="https://image.ibb.co/e6vOFQ/wikipedia.png">
-    <!-- Form -->
-    <form class="searchForm" (submit)="search()">
-      <input  type="search"
-              name="ricerca"
-              class="searchForm-input"
-              [(ngModel)]="stringaDiRicerca"
-              placeholder="Scrivi un termine di ricerca">
-      <!-- Tasto cerca -->
-      <button type="submit"
-              class="icon searchIcon">
-        <img src="https://image.ibb.co/cpG8zk/search.png">
-      </button>
-    </form>
-  </header>
-
+  
   <!-- Risultati di ricerca -->
   <section class="searchResults">
     <div class="resultItem" *ngFor="let result of resultsList">

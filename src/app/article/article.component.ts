@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ArticleComponent implements OnInit {
 
-  contenutoPagina = "<h3>Ciao</h3><p>Lorem Ipsum</p>"
+  contenutoPagina = "<h3>Porta pazienza.</h3><p>Sto caricando...</p>"
 
   constructor(private http: HttpClient,
               private route: ActivatedRoute) { }

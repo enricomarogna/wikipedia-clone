@@ -8,13 +8,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WikiComponent } from './wiki/wiki.component';
 import { ArticleComponent } from './article/article.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { SearchBoxComponent } from './search-box/search-box.component';
+import { HistoryComponent } from './history/history.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     WikiComponent,
-    ArticleComponent
+    ArticleComponent,
+    NavigationComponent,
+    SearchBoxComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,

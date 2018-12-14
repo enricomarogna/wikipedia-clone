@@ -3,9 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { WikiComponent } from './wiki/wiki.component';
 import { ArticleComponent } from './article/article.component';
 
-const routes: Routes = [
-  { path: '', component: WikiComponent }, // Indirizzo URL per il routing
-  { path: 'article/:title', component: ArticleComponent } 
+import { HistoryComponent } from './history/history.component';
+
+const routes: Routes = [ // Indirizzi URL per il routing
+  { path: '', component: WikiComponent }, 
+  { path: 'article/:title', component: ArticleComponent },
+  { path: 'results/:stringaDiRicerca', component: WikiComponent },
+  { path: 'history', component: HistoryComponent } 
 ];
 
 @NgModule({

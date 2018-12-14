@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-wiki',
@@ -11,29 +12,37 @@ export class WikiComponent implements OnInit {
   stringaDiRicerca: string;
   resultsList: [];
 
-  constructor(private http: HttpClient) {  }
+  constructor(private http: HttpClient, private router: ActivatedRoute) {  }
 
   getURL(termine) {
-    return 'https://it.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=20&srsearch=' + termine
+    let wiki: string;
+    wiki = 'https://it.wikipedia.org/w/api.php?';
+    wiki += 'action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=20&srsearch=';
+    return  wiki + termine;
   }
 
-getLink(title) {
-  return encodeURI("https://it.wikipedia.org/wiki/" + title)
-}
-
-  search() {
-    // chiamata API wikipedia
-    var url = this.getURL(this.stringaDiRicerca)
-    this.http.get(url)  // chiamata asincrona
-      .subscribe((response: any) => {
-         //console.log(response)
-        this.resultsList = response.query.search
-      })
-    // cercherà contenuto stringa di ricerca
-    // dslverà il risultato in "resultsList"
+  getLink(title) {
+    return encodeURI('https://it.wikipedia.org/wiki/' + title);
   }
 
   ngOnInit() {
+    // this.router.params.subscribe(params => {
+    //   this.stringaDiRicerca = params['stringaDiRicerca']
+    //   if (this.stringaDiRicerca != '') {
+    //     this.search()
+    //   }
+    // })
+
+    this.router.params.subscribe(params => {
+      const string = params['stringaDiRicerca']
+        if (string.length > 0) {
+        this.http.get(this.getURL(string))
+        .subscribe((response: any) => {
+          this.resultsList = response.query.search
+        })
+      }
+    })
+
   }
 
 }
