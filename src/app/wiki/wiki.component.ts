@@ -35,12 +35,12 @@ export class WikiComponent implements OnInit {
 
     this.router.params.subscribe(params => {
       const string = params['stringaDiRicerca']
-        if (string.length > 0) {
+        
         this.http.get(this.getURL(string))
         .subscribe((response: any) => {
           this.resultsList = response.query.search
         })
-      }
+      
     })
 
   }
